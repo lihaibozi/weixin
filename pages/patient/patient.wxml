@@ -1,0 +1,44 @@
+<label class="luruTab">录入病人基础信息</label>
+<view class="line"></view>
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <view class="inputView">
+    <label class="loginLab">姓名</label>
+    <input class='inputText' name='patientName' value="{{patientName}}" placeholder="请输入姓名" placeholder-style='color:red' bindinput="getInput" />
+  </view>
+  <view class="line"></view>
+  <view class="inputView">
+    <label class="loginLab">性别</label>
+    <radio-group class='radio' name="patientSex" bindchange="radioChange">
+      <radio value="1" checked />男
+      <radio value="2" />女
+    </radio-group>
+  </view>
+  <view class="line"></view>
+  <view class="inputView">
+    <label class="loginLab">年龄</label>
+    <input class='inputText' name='patientAge' value="{{patientAge}}" type='number' placeholder="请输入年龄" maxlength="3" placeholder-style='color:red' bindinput="getInput" />
+  </view>
+  <view class="line"></view>
+  <view class="inputView">
+    <label class="loginLab">身份证号</label>
+    <input class='inputText' name='patientCardNo' value="{{patientCardNo}}" placeholder="请输入身份证号" maxlength="18" placeholder-style='color:red' bindinput="getInput" />
+  </view>
+  <view class="line"></view>
+  <view class="inputView">
+    <label class="loginLab">手机号</label>
+    <input class='inputText' name='patientPhoneNumber' value="{{patientPhoneNumber}}" type='number' placeholder="请输入手机号" type='number' maxlength="11" placeholder-style='color:red' bindinput="getInput" />
+  </view>
+  <view class="line"></view>
+  <view class="inputView">
+    <label class="loginLab">地址</label>
+    <input class='inputText' name='patientAddress' value="{{patientAddress}}" placeholder="请输入地址" bindinput="getInput" />
+  </view>
+  <view class="line"></view>
+  <view class="ad_popError" wx:if="{{popErrorMsg}}">{{popErrorMsg}}</view>
+  <button class='luru' type='primary' formType="submit">录入</button>
+</form>
+<view class="page__bd">
+  <modal title="确认" confirm-text="确定" cancel-text="取消" hidden="{{modalHidden}}" mask bindconfirm="confirm_one" bindcancel="cancel_one">
+    确认信息无误？
+  </modal>
+</view>
