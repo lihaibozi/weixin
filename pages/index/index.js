@@ -35,7 +35,8 @@ Page({
                     //console.log({ encryptedData: res.encryptedData, iv: res.iv, code: code })
                     //3.请求自己的服务器，解密用户信息 获取unionId等加密信息
                     wx.request({
-                      url: 'http://localhost:8080/kin/gh/login/login',//自己的服务接口地址
+                      url: 'https://jzxcx.bydsfy.com/kin/gh/login/login',//自己的服务接口地址
+                      // url: 'http://localhost:8080/kin/gh/login/login',//自己的服务接口地址
                       method: 'post',
                       data: { encryptedData: res.encryptedData, iv: res.iv, code: code },
                       success: function (data) {

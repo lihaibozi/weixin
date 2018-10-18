@@ -18,13 +18,12 @@
 }
 
 .loginLab {
-  /* margin: 15px 15px 15px 10px; */
+  /* margin: 15px 15px 15px 10px;  */
   color: #545454;
   font-size: 14px
 }
 .inputText {
-  /* border: solid;  */
-  width: 300px;
+  /* border: solid;   */
   flex: block;
   float: right;
   text-align: right;

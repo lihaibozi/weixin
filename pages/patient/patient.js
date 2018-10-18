@@ -9,10 +9,10 @@ Page({
     patientAge: '',
     patientName: '',
     patientPhoneNumber: '',
-    patientCardNo:'',
-    patientAddress:''
+    patientCardNo: '',
+    patientAddress: ''
   },
-  modalTap: function (e) {
+  modalTap: function(e) {
     this.setData({
       modalHidden: false
     })
@@ -37,59 +37,34 @@ Page({
     this.setData({
       patientAddress: e.detail.value.patientAddress
     })
-    if (this.data.patientName.length == 0) {
-      console.log("aaa");
-      this.setData(
-        { popErrorMsg: "姓名不能为空!" }
-      );
+    if (this.data.patientName == 0) {
+      this.setData({
+        popErrorMsg: "姓名不能为空!"
+      });
       this.ohShitfadeOut();
       return;
-      // wx.showToast({
-      //   title: '姓名不能为空!',
-      //   icon: 'loading',
-      //   duration: 1000
-      // })
-      // return;
     } else if (this.data.patientAge.length == 0) {
-      this.setData(
-        { popErrorMsg: "年龄信息输入有误!" }
-      );
+      this.setData({
+        popErrorMsg: "年龄信息输入有误!"
+      });
       this.ohShitfadeOut();
       return;
-      // wx.showToast({
-      //   title: '年龄信息输入有误!',
-      //   icon: 'loading',
-      //   duration: 1000
-      // })
-      // return;
-    } else if (this.data.patientCardNo.length == 0 || this.data.patientCardNo.length < 18) {
-      this.setData(
-        { popErrorMsg: "身份证信息输入有误!" }
-      );
+    } else if (this.data.patientCardNo.length == 0 || !(/(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/.test(this.data.patientCardNo))) {
+      this.setData({
+        popErrorMsg: "身份证信息输入有误!"
+      });
       this.ohShitfadeOut();
       return;
-      // wx.showToast({
-      //   title: '身份证信息有误!',
-      //   icon: 'loading',
-      //   duration: 1000
-      // })
-      // return;
-    } else if (this.data.patientPhoneNumber.length == 0 || this.data.patientPhoneNumber.length < 11) {
-      this.setData(
-        { popErrorMsg: "手机号输入有误!" }
-      );
+    } else if (this.data.patientPhoneNumber.length == 0 || this.data.patientPhoneNumber.length != 11 || !(/^1[34578]\d{9}$/.test(this.data.patientPhoneNumber))) {
+      this.setData({
+        popErrorMsg: "手机号输入有误!"
+      });
       this.ohShitfadeOut();
       return;
-      // wx.showToast({
-      //   title: '手机号有误!',
-      //   icon: 'loading',
-      //   duration: 1000
-      // })
-      // return;
     }
     this.modalTap();
   },
-  confirm_one: function (e) {
+  confirm_one: function(e) {
     var _this = this;
     console.log(e);
     this.setData({
@@ -98,7 +73,8 @@ Page({
       notice_str: '提交成功'
     })
     wx.request({
-      url: 'http://localhost:8080/kin/gh/patient/save',
+      url: 'https://jzxcx.bydsfy.com/kin/gh/patient/save',
+      // url: 'http://localhost:8080/kin/gh/patient/save',
       data: {
         patientSex: this.data.patientSex,
         patientAge: this.data.patientAge,
@@ -109,7 +85,7 @@ Page({
         openId: getApp().globalData.userInfo.openId
       },
       method: 'POST',
-      success: function (res) {
+      success: function(res) {
         if (res.data.result == 1) {
           wx.showToast({
             title: '录入成功！',
@@ -133,12 +109,12 @@ Page({
         }
 
       },
-      fail: function () {
+      fail: function() {
         console.log('系统错误')
       }
     })
-    },
-  cancel_one: function (e) {
+  },
+  cancel_one: function(e) {
     console.log(e);
     this.setData({
       modalHidden: true,
@@ -148,9 +124,11 @@ Page({
   },
   ohShitfadeOut() {
     var fadeOutTimeout = setTimeout(() => {
-      this.setData({ popErrorMsg: '' });
+      this.setData({
+        popErrorMsg: ''
+      });
       clearTimeout(fadeOutTimeout);
     }, 3000);
-    }
+  }
 
 })

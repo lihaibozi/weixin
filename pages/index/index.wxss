@@ -2,9 +2,20 @@
 .ad_popError{ background: #de352d; color: #fff; height: 58rpx; font-size: 35rpx; text-align: center}
 
 .userinfo {
+  margin: 0 auto;  
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  width: 161rpx;
+  height: 161rpx;
+  border-radius: 50%;
+  
+}
+.userinfoN {
   display: flex;
   flex-direction: column;
   align-items: center;
+  
 }
 
 .userinfo-avatar {

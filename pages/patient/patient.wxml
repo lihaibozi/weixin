@@ -1,4 +1,4 @@
-<label class="luruTab">录入病人基础信息</label>
+<label class="luruTab">录入患者基础信息</label>
 <view class="line"></view>
 <form bindsubmit="formSubmit" bindreset="formReset">
   <view class="inputView">
